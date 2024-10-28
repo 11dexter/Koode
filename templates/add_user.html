@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block title %}Add User{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Add User</h1>
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+        <div class="col">
+            <div class="card shadow mb-4">
+                <!-- Card Header -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">New User</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div>
+                        <form class="user" method="POST">
+                            {% csrf_token %}
+
+                            <!-- First Name and Last Name Row -->
+                            <div class="form-row">
+                                <div class="col-sm-6">
+                                    <label for="{{ form.customer_first_name.id_for_label }}">First Name</label>
+                                    {{ form.customer_first_name }}
+                                    {% if form.customer_first_name.errors %}
+                                        <div class="error">{{ form.customer_first_name.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="{{ form.customer_last_name.id_for_label }}">Last Name</label>
+                                    {{ form.customer_last_name }}
+                                    {% if form.customer_last_name.errors %}
+                                        <div class="error">{{ form.customer_last_name.errors }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <!-- Email and Phone Number Row -->
+                            <div class="form-row">
+                                <div class="col-sm-6">
+                                    <label for="{{ form.customer_email.id_for_label }}">Email</label>
+                                    {{ form.customer_email }}
+                                    {% if form.customer_email.errors %}
+                                        <div class="error">{{ form.customer_email.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="{{ form.customer_phone_number.id_for_label }}">Phone Number</label>
+                                    {{ form.customer_phone_number }}
+                                    {% if form.customer_phone_number.errors %}
+                                        <div class="error">{{ form.customer_phone_number.errors }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <!-- Password and Gender Row -->
+                            <div class="form-row">
+                                <div class="col-sm-6">
+                                    <label for="{{ form.customer_password.id_for_label }}">Password</label>
+                                    {{ form.customer_password }}
+                                    {% if form.customer_password.errors %}
+                                        <div class="error">{{ form.customer_password.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="{{ form.gender.id_for_label }}">Gender</label>
+                                    {{ form.gender }}
+                                    {% if form.gender.errors %}
+                                        <div class="error">{{ form.gender.errors }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <!-- Status Row -->
+                            <div class="form-row">
+                                <div class="col-sm-6">
+                                    <label for="{{ form.status.id_for_label }}">Status</label>
+                                    {{ form.status }}
+                                    {% if form.status.errors %}
+                                        <div class="error">{{ form.status.errors }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <input type="submit" class="btn btn-primary" value="SUBMIT">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .form-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+    .col-sm-6 {
+        width: 48%;
+    }
+    .error {
+        color: red;
+        font-size: 1em;
+        width: 100%;
+        margin-top: 5px;
+    }
+</style>
+
+{% endblock %}
